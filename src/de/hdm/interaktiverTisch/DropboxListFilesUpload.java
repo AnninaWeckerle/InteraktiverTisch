@@ -17,8 +17,10 @@ public class DropboxListFilesUpload {
 			DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
 					Locale.getDefault().toString());
 			
-			DbxClient client = new DbxClient(config, 
-					"RG2gELbsdUAAAAAAAAAK0sKSIFQ0eO_D39GKnGfCdROqeQ8erYFewAcCXT-p3RJ6");
+			Showcase showcase = new Showcase();
+			Teilnehmer t = showcase.t1;
+			
+			DbxClient client = new DbxClient(config, t.getAccessKey());
 			
 			String path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
 			
@@ -58,6 +60,8 @@ public class DropboxListFilesUpload {
 					
 					for (File file2: filesToUpload2) {
 						
+						if (file2.isFile() == true) {
+						
 						File fileNeu2 = new File(path2, file2.getName());
 						System.out.println(fileNeu2);
 						
@@ -69,6 +73,14 @@ public class DropboxListFilesUpload {
 						System.out.println("Eine Datei wurde in den Unterordner hochgeladen!");
 						
 						fileInputStream2.close();
+						}
+						
+						else if (file2.isDirectory() == true) {
+							
+							client.createFolder("/Gruppenarbeit_User/" + file.getName() + "/" + file2.getName());
+
+							System.out.println("Es wurde ein neuer Unterordner angelegt.");
+						}
 					}
 			    }
 			}

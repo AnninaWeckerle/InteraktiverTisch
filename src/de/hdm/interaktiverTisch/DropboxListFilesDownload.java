@@ -8,7 +8,10 @@ import com.dropbox.core.DbxClient;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxRequestConfig;
 
+import de.hdm.interaktiverTisch.Teilnehmer;
+
 public class DropboxListFilesDownload {
+	
 	
 	public static void main(String[] args) {
 		
@@ -16,12 +19,14 @@ public class DropboxListFilesDownload {
 			
 			DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
 					Locale.getDefault().toString());
+			 
+			Showcase showcase = new Showcase();
+			Teilnehmer t = showcase.t1;
 			
-			DbxClient client = new DbxClient(config, "RG2gELbsdUAAAAAAAAAK0sKSIFQ0eO_D39GKnGfCdROqeQ8erYFewAcCXT-p3RJ6");
-			
+			DbxClient client = new DbxClient(config, t.getAccessKey());
+
 			DbxEntry.WithChildren files = client.getMetadataWithChildren("/Gruppenarbeit_User");
 			
-
 			for (DbxEntry file : files.children) {
 				
 				String path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
@@ -45,24 +50,28 @@ public class DropboxListFilesDownload {
 
 					System.out.println("Es wurde ein neuer Unterordner angelegt.");
 					
+					DbxEntry.WithChildren files2 = client.getMetadataWithChildren("/Gruppenarbeit_User/" + file.name);
+					
 					String path2 = path + "/" + file.name;
 					
-					File directory = new File(path2);
-					
-					File[] filesToDownload = directory.listFiles();
-					System.out.println(filesToDownload.toString());
-					
-					for (File file2 : filesToDownload) {
-						System.out.println("Hallo");
+					for (DbxEntry file2 : files2.children) {
 						
-						File fileNeu = new File(path2, file2.getName());
-						System.out.println(file2.getName());
+						if (file2.isFile() == true) {
+							
+							File fileNeu = new File(path2, file2.name);
+							
+							FileOutputStream fileOutputStream2 = new FileOutputStream(fileNeu);
+							
+							System.out.println("Die Datei " + file2.name + " wurde dem Unterordner hinzugefügt.");
+							
+							fileOutputStream2.close();
+							
+						}
 						
-						FileOutputStream fileOutputStream2 = new FileOutputStream(fileNeu);
-						
-						System.out.println("Es wurde eine Datei dem Unterordner hinzugefügt.");
-						
-						fileOutputStream2.close();
+						else if (file2.isFolder() == true) {
+							File folder2 = new File(path2, file2.name);
+							folder2.mkdir();
+						}
 					}
 				}
 			} 
