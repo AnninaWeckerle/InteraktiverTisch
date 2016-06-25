@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/annina/Downloads/dropbox-java-sdk-1.8.2/dropbox-java-sdk-1.8.2/lib/dropbox-core-sdk-1.8.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/annina/Downloads/dropbox-java-sdk-1.8.2/dropbox-java-sdk-1.8.2/lib/jackson-core-2.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/annina/Downloads/Kooperationstechnologie-Projekt/bluecove-2.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

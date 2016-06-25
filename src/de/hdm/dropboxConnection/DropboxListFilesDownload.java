@@ -1,4 +1,4 @@
-package de.hdm.interaktiverTisch;
+package de.hdm.dropboxConnection;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -8,10 +8,22 @@ import com.dropbox.core.DbxClient;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxRequestConfig;
 
-import de.hdm.interaktiverTisch.Teilnehmer;
 
+/**
+ * Klasse, die Dateien aus dem online Dropbox-Ordner "Gruppenarbeit_User" des Nutzers 
+ * herunterlaedt und im lokalen Ordner "Gruppenarbeit_Lokal" speichert.
+ * Den Zugang zum spezifischen Nutzerordner erhaelt das Programm ueber den AccessKey 
+ * des Nutzers, auf dessen Dropbox zugegriffen werden soll.
+ */
 public class DropboxListFilesDownload {
 	
+	private static String accessKey;
+	private static String path;
+	
+	public DropboxListFilesDownload(String accessKey, String path) {
+		this.accessKey = accessKey;
+		this.path = path;
+	}
 	
 	public static void main(String[] args) {
 		
@@ -19,17 +31,14 @@ public class DropboxListFilesDownload {
 			
 			DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
 					Locale.getDefault().toString());
-			 
-			Showcase showcase = new Showcase();
-			Teilnehmer t = showcase.t1;
 			
-			DbxClient client = new DbxClient(config, t.getAccessKey());
+			DbxClient client = new DbxClient(config, accessKey);
 
 			DbxEntry.WithChildren files = client.getMetadataWithChildren("/Gruppenarbeit_User");
 			
 			for (DbxEntry file : files.children) {
 				
-				String path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
+				path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
 				
 				if (file.isFolder() == false) {
 					
@@ -65,7 +74,6 @@ public class DropboxListFilesDownload {
 							System.out.println("Die Datei " + file2.name + " wurde dem Unterordner hinzugefügt.");
 							
 							fileOutputStream2.close();
-							
 						}
 						
 						else if (file2.isFolder() == true) {
@@ -77,6 +85,8 @@ public class DropboxListFilesDownload {
 			} 
 			
 			System.out.println("Die Dateien aus dem Ordner Gruppenarbeit wurden heruntergeladen.");
+			
+			DirectoryAnimation anim = new DirectoryAnimation(path, "Download");
 
 		}
 		
@@ -84,5 +94,4 @@ public class DropboxListFilesDownload {
 			ex.printStackTrace();
 		}
 	}
-
 }

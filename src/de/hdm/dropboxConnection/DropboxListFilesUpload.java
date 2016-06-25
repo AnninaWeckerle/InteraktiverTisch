@@ -1,4 +1,4 @@
-package de.hdm.interaktiverTisch;
+package de.hdm.dropboxConnection;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +8,21 @@ import com.dropbox.core.DbxClient;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.DbxWriteMode;
 
+/**
+ * Klasse, die Dateien aus dem lokalen Dropbox-Ordner "Gruppenarbeit_Lokal" auf dem 
+ * PC fuer die Gruppenarbeit in den online Dropbox-Ordner des Nutzers hochlaedt.
+ * Den Zugang zum spezifischen Nutzerordner erhaelt das Programm ueber den AccessKey 
+ * des Nutzers, auf dessen Dropbox zugegriffen werden soll.
+ */
 public class DropboxListFilesUpload {
+	
+	static String accessKey;
+	static String path;
+	
+	public DropboxListFilesUpload(String accessKey, String path) {
+		this.accessKey = accessKey;
+		this.path = path;
+	}
 	
 	public static void main(String[] args) {
 		
@@ -17,13 +31,10 @@ public class DropboxListFilesUpload {
 			DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
 					Locale.getDefault().toString());
 			
-			Showcase showcase = new Showcase();
-			Teilnehmer t = showcase.t1;
 			
-			DbxClient client = new DbxClient(config, t.getAccessKey());
+			DbxClient client = new DbxClient(config, accessKey);
 			
-			String path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
-			
+//			String path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
 			
 			File directory = new File(path);
 			File[] filesToUpload = directory.listFiles();
@@ -86,6 +97,8 @@ public class DropboxListFilesUpload {
 			}
 
 			System.out.println("Die Dateien aus dem Ordner Gruppenarbeit_Lokal wurden hochgeladen.");
+			
+			DirectoryAnimation anim = new DirectoryAnimation(path, "UploadNeu");
 		}
 		
 		catch (Exception ex) {
