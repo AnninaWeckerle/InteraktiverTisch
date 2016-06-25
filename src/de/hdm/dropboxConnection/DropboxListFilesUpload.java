@@ -34,8 +34,6 @@ public class DropboxListFilesUpload {
 			
 			DbxClient client = new DbxClient(config, accessKey);
 			
-//			String path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
-			
 			File directory = new File(path);
 			File[] filesToUpload = directory.listFiles();
 			
