@@ -21,12 +21,7 @@ public class DropboxInteraktiverTisch {
 	public static void main(String[] args) {
 		
 		try {
-//				DbxAppInfo appInfo = new DbxAppInfo("sgohupmfu5dj12d", 	
-//						"dtc9l0jpu7r30rw");
-//				
-//				DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
-//						Locale.getDefault().toString());
-			
+
 				DbxAppInfo appInfo = new DbxAppInfo("eznx3qgarjzrt4v", 	
 						"4gmdmgswkkkgugd");
 				

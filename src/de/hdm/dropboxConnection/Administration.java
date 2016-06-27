@@ -56,10 +56,6 @@ public class Administration {
 //			accessKey = "z9OW9fQQQB0AAAAAAAAgrfuxAaRB0FbzZwrbMTsji_Lrl4VVX8CUrodS8-JrAduP";
 //		}
 		
-		if (name.equals("Annina")) {
-			accessKey = "RG2gELbsdUAAAAAAAAAK-_nMF3QJ0TuwXhRdjOv1kNJ5C4EhGDrGBdk50t2WhCnL";
-		}
-		
 		DropboxListFilesUpload upload = new DropboxListFilesUpload(accessKey, path);
 		upload.main(null);
 	}
@@ -82,10 +78,6 @@ public class Administration {
 //		else if (name.equals("Nina")) {
 //			accessKey = "z9OW9fQQQB0AAAAAAAAgrfuxAaRB0FbzZwrbMTsji_Lrl4VVX8CUrodS8-JrAduP";
 //		}
-		
-		if (name.equals("Annina")) {
-			accessKey = "RG2gELbsdUAAAAAAAAAK-_nMF3QJ0TuwXhRdjOv1kNJ5C4EhGDrGBdk50t2WhCnL";
-		}
 		
 		DropboxListFilesDownload download = new DropboxListFilesDownload(accessKey, path);
 		download.main(null);

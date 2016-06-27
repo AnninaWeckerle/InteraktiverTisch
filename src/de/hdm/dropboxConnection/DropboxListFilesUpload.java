@@ -28,9 +28,6 @@ public class DropboxListFilesUpload {
 		
 		try {
 			
-//			DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
-//					Locale.getDefault().toString());
-			
 			DbxRequestConfig config = new DbxRequestConfig("FlyingDocs", 
 					Locale.getDefault().toString());
 			
@@ -46,9 +43,6 @@ public class DropboxListFilesUpload {
 					
 					FileInputStream fileInputStream = new FileInputStream(fileNeu);
 
-//					client.uploadFile("/Gruppenarbeit_User/" + file.getName(), DbxWriteMode.add(), 
-//							file.length(), fileInputStream);
-					
 					client.uploadFile("/" + file.getName(), DbxWriteMode.add(), 
 							file.length(), fileInputStream);
 
@@ -62,8 +56,6 @@ public class DropboxListFilesUpload {
 					
 					String path2 = path + "/" + file.getName();
 					
-//					client.createFolder("/Gruppenarbeit_User/" + file.getName());
-
 					client.createFolder("/" + file.getName());
 					
 					System.out.println("Es wurde ein neuer Unterordner angelegt.");
@@ -83,9 +75,6 @@ public class DropboxListFilesUpload {
 						
 						FileInputStream fileInputStream2 = new FileInputStream(fileNeu2);
 
-//						client.uploadFile("/Gruppenarbeit_User/" + file.getName() + "/" + file2.getName(), DbxWriteMode.add(), 
-//								file2.length(), fileInputStream2);
-						
 						client.uploadFile("/" + file.getName() + "/" + file2.getName(), DbxWriteMode.add(), 
 								file2.length(), fileInputStream2);
 
@@ -96,8 +85,6 @@ public class DropboxListFilesUpload {
 						
 						else if (file2.isDirectory() == true) {
 							
-//							client.createFolder("/Gruppenarbeit_User/" + file.getName() + "/" + file2.getName());
-
 							client.createFolder("/" + file.getName() + "/" + file2.getName());
 							
 							System.out.println("Es wurde ein neuer Unterordner angelegt.");

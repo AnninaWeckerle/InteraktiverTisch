@@ -29,21 +29,14 @@ public class DropboxListFilesDownload {
 		
 		try {
 			
-//			DbxRequestConfig config = new DbxRequestConfig("InteraktiverTisch", 
-//					Locale.getDefault().toString());
-			
 			DbxRequestConfig config = new DbxRequestConfig("FlyingDocs", 
 					Locale.getDefault().toString());
 			
 			DbxClient client = new DbxClient(config, accessKey);
 
-//			DbxEntry.WithChildren files = client.getMetadataWithChildren("/Gruppenarbeit_User");
-			
 			DbxEntry.WithChildren files = client.getMetadataWithChildren("/");
 			
 			for (DbxEntry file : files.children) {
-				
-//				path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
 				
 				if (file.isFolder() == false) {
 					
@@ -63,8 +56,6 @@ public class DropboxListFilesDownload {
 					folder.mkdir();
 
 					System.out.println("Es wurde ein neuer Unterordner angelegt.");
-					
-//					DbxEntry.WithChildren files2 = client.getMetadataWithChildren("/Gruppenarbeit_User/" + file.name);
 					
 					DbxEntry.WithChildren files2 = client.getMetadataWithChildren("/" + file.name);
 					
