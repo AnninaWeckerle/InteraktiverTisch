@@ -10,8 +10,6 @@ import java.util.List;
 public class Administration {
 	
 	
-	private static String accessKey;
-	
 	public static List<String> gebeTeilnehmerliste () {
 		
 		List<String> teilnehmerliste = new ArrayList<String>();
@@ -41,21 +39,25 @@ public class Administration {
 	
 	
 	
-	public static void upload(String name, String art, String path) {
+	public static void upload(String name, String art, String accessKey, String path) {
 		
 		art = "Upload";
 		path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
 		
-		if (name.equals("Dunja")) {
-			accessKey = "rXYVHDdGNSQAAAAAAAAATiHDfUw7CJa-4m_W0GzivFT9xFhmfkmatFGx1CYXfB4d";
-		}
+//		if (name.equals("Dunja")) {
+//			accessKey = "rXYVHDdGNSQAAAAAAAAATiHDfUw7CJa-4m_W0GzivFT9xFhmfkmatFGx1CYXfB4d";
+//		}
+//		
+//		else if (name.equals("Annina")) {
+//			accessKey = "RG2gELbsdUAAAAAAAAAK-_nMF3QJ0TuwXhRdjOv1kNJ5C4EhGDrGBdk50t2WhCnL";
+//		}
+//		
+//		else if (name.equals("Nina")) {
+//			accessKey = "z9OW9fQQQB0AAAAAAAAgrfuxAaRB0FbzZwrbMTsji_Lrl4VVX8CUrodS8-JrAduP";
+//		}
 		
-		else if (name.equals("Annina")) {
-			accessKey = "RG2gELbsdUAAAAAAAAAK9YB48u4QdiRc33eQDqD8RhrHV9rpaRct6h2Huq6he9c0";
-		}
-		
-		else if (name.equals("Nina")) {
-			accessKey = "z9OW9fQQQB0AAAAAAAAgrfuxAaRB0FbzZwrbMTsji_Lrl4VVX8CUrodS8-JrAduP";
+		if (name.equals("Annina")) {
+			accessKey = "RG2gELbsdUAAAAAAAAAK-_nMF3QJ0TuwXhRdjOv1kNJ5C4EhGDrGBdk50t2WhCnL";
 		}
 		
 		DropboxListFilesUpload upload = new DropboxListFilesUpload(accessKey, path);
@@ -64,21 +66,25 @@ public class Administration {
 	
 	
 	
-	public static void download(String name, String art, String path) {
+	public static void download(String name, String art, String accessKey, String path) {
 		
 		art = "Download";
 		path = "C://Users/annina/Desktop/Gruppenarbeit_Lokal";
 		
-		if (name.equals("Dunja")) {
-			accessKey = "rXYVHDdGNSQAAAAAAAAATiHDfUw7CJa-4m_W0GzivFT9xFhmfkmatFGx1CYXfB4d";
-		}
+//		if (name.equals("Dunja")) {
+//			accessKey = "rXYVHDdGNSQAAAAAAAAATiHDfUw7CJa-4m_W0GzivFT9xFhmfkmatFGx1CYXfB4d";
+//		}
+//		
+//		else if (name.equals("Annina")) {
+//			accessKey = "RG2gELbsdUAAAAAAAAAK-_nMF3QJ0TuwXhRdjOv1kNJ5C4EhGDrGBdk50t2WhCnL";
+//		}
+//		
+//		else if (name.equals("Nina")) {
+//			accessKey = "z9OW9fQQQB0AAAAAAAAgrfuxAaRB0FbzZwrbMTsji_Lrl4VVX8CUrodS8-JrAduP";
+//		}
 		
-		else if (name.equals("Annina")) {
-			accessKey = "RG2gELbsdUAAAAAAAAAK9YB48u4QdiRc33eQDqD8RhrHV9rpaRct6h2Huq6he9c0";
-		}
-		
-		else if (name.equals("Nina")) {
-			accessKey = "z9OW9fQQQB0AAAAAAAAgrfuxAaRB0FbzZwrbMTsji_Lrl4VVX8CUrodS8-JrAduP";
+		if (name.equals("Annina")) {
+			accessKey = "RG2gELbsdUAAAAAAAAAK-_nMF3QJ0TuwXhRdjOv1kNJ5C4EhGDrGBdk50t2WhCnL";
 		}
 		
 		DropboxListFilesDownload download = new DropboxListFilesDownload(accessKey, path);
